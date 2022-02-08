@@ -11,8 +11,8 @@
     "typescript": "^4.5.5"
   },
   "scripts": {
-    "start": "node --experimental-json-modules src/main.js",
-    "commands": "node --experimental-json-modules src/deploy-commands.js"
+    "start": "node --experimental-json-modules --es-module-specifier-resolution=node src/main.js",
+    "commands": "node --experimental-json-modules --es-module-specifier-resolution=node src/deploy-commands.js"
   },
   "type": "module"
 }
