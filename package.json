@@ -1,5 +1,8 @@
 {
   "dependencies": {
+    "@discordjs/builders": "^0.12.0",
+    "@discordjs/rest": "^0.3.0",
+    "discord-api-types": "^0.26.1",
     "discord.js": "^13.6.0"
   },
   "devDependencies": {
@@ -8,6 +11,8 @@
     "typescript": "^4.5.5"
   },
   "scripts": {
-    "start": "ts-node src/main.ts"
-  }
+    "start": "node --experimental-json-modules src/main.js",
+    "commands": "node --experimental-json-modules src/deploy-commands.js"
+  },
+  "type": "module"
 }
