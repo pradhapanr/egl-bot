@@ -5,7 +5,8 @@
  * just have no clue what it is right now.
  */
 import ping from "./ping";
+import game from "./game";
 
-export const commandArray = [ping];
+export const commandArray = [ping, game];
 
 export default commandArray;
