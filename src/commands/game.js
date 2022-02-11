@@ -14,7 +14,8 @@ const game = {
     ),
   async execute(interaction) {
     if (interaction.options.getSubcommand() === "upload") {
-      interaction.reply("you tried to upload good job broski");
+      const url = interaction.options.getString("link");
+      console.log(url);
     }
   },
 };
