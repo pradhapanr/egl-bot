@@ -6,6 +6,7 @@
     "better-pastebin": "^0.4.1",
     "discord-api-types": "^0.26.1",
     "discord.js": "^13.6.0",
+    "mongoose": "^6.2.1",
     "node-fetch": "^3.2.0"
   },
   "devDependencies": {

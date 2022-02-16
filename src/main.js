@@ -1,4 +1,10 @@
-import { Client, Collection, Intents } from "discord.js";
+import {
+  Client,
+  Collection,
+  CommandInteractionOptionResolver,
+  Intents,
+} from "discord.js";
+import mongoose from "mongoose";
 
 import commandArray from "./commands/CommandArray";
 import config from "../config.json";
@@ -13,8 +19,22 @@ for (const command of commandArray) {
   client.commands.set(command.data.name, command);
 }
 
-client.once("ready", () => {
+client.on("ready", () => {
   console.log("Bot is online!");
+
+  try {
+    // Connect to the MongoDB cluster
+    mongoose.connect(config.mongoUri, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log("Connected to MongoDB!");
+  } catch (e) {
+    console.error("Connection to MongoDB Failed.");
+    console.error(e);
+  } finally {
+    mongoose.connection.close();
+  }
 });
 
 client.on("interactionCreate", async (interaction) => {
