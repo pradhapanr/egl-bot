@@ -6,7 +6,9 @@
  */
 import ping from "./ping";
 import game from "./game";
+import test from "./test";
+import player from "./player";
 
-export const commandArray = [ping, game];
+export const commandArray = [ping, game, test, player];
 
 export default commandArray;

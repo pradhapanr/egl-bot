@@ -1,12 +1,7 @@
-import {
-  Client,
-  Collection,
-  CommandInteractionOptionResolver,
-  Intents,
-} from "discord.js";
+import { Client, Collection, Intents } from "discord.js";
 import mongoose from "mongoose";
 
-import commandArray from "./commands/CommandArray";
+import commandArray from "./commands/command-array";
 import config from "../config.json";
 
 const client = new Client({
@@ -27,13 +22,12 @@ client.on("ready", () => {
     mongoose.connect(config.mongoUri, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
+      autoIndex: true,
     });
     console.log("Connected to MongoDB!");
   } catch (e) {
     console.error("Connection to MongoDB Failed.");
     console.error(e);
-  } finally {
-    mongoose.connection.close();
   }
 });
 
@@ -56,3 +50,4 @@ client.on("interactionCreate", async (interaction) => {
 });
 
 client.login(config.token);
+mongoose.connection.close();
