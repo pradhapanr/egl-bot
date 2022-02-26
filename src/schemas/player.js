@@ -4,13 +4,15 @@ const playerSchema = mongoose.Schema({
   summonerName: {
     type: String,
     required: true,
+    unique: true,
+    dropDups: true,
   },
   role: {
     type: String,
     required: true,
   },
   tier: {
-    type: Number,
+    type: String,
     required: true,
   },
   division: {
@@ -21,6 +23,10 @@ const playerSchema = mongoose.Schema({
   },
   pointValue: {
     type: Number,
+    required: true,
+  },
+  team: {
+    type: String,
     required: true,
   },
 });

@@ -5,10 +5,11 @@
  * just have no clue what it is right now.
  */
 import ping from "./ping";
-import game from "./game";
+import game from "./game/game";
 import test from "./test";
-import player from "./player";
+import player from "./player/player";
+import team from "./team/team";
 
-export const commandArray = [ping, game, test, player];
+export const commandArray = [ping, game, test, player, team];
 
 export default commandArray;

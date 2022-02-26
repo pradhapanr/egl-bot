@@ -1,5 +1,8 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
 
+import { Player } from "../../models/models";
+import getRank from "../../utils/league-stats";
+
 const player = {
   data: new SlashCommandBuilder()
     .setName("player")
@@ -20,6 +23,18 @@ const player = {
             .setDescription("Team that the player is on.")
             .setRequired(true)
         )
+        .addIntegerOption((option) =>
+          option
+            .setName("circuitpoints")
+            .setDescription("The Circuit Point value of the player.")
+            .setRequired(true)
+        )
+        .addStringOption((option) =>
+          option
+            .setName("role")
+            .setDescription("The role that this player fills.")
+            .setRequired(true)
+        )
     )
     .addSubcommand((subcommand) =>
       subcommand
@@ -35,14 +50,28 @@ const player = {
   async execute(interaction) {
     const command = interaction.options.getSubcommand();
 
-    if (interaction.options.getSubcommand() === "create") {
-      const username = interaction.options.getString("username");
-      console.log(username);
-      await interaction.reply("yoooo");
-    }
-
     switch (command) {
       case "create":
+        const username = interaction.options.getString("username");
+        const team = interaction.options.getString("team");
+        const circuitPoints = interaction.options.getInteger("circuitpoints");
+        const role = interaction.options.getString("role");
+
+        const rank = await getRank(username);
+
+        const player = new Player({
+          summonerName: username,
+          role: role,
+          tier: rank.tier,
+          division: rank.division,
+          leaguePoints: rank.leaguePoints,
+          pointValue: circuitPoints,
+          team: team,
+        });
+
+        await player.save();
+        await interaction.reply(`${username} has been added to the database.`);
+
         break;
       case "delete":
         break;
