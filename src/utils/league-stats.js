@@ -21,17 +21,30 @@ async function getRankData(summonerId) {
 
   const rankData = (await res.json())[0];
 
+  if (!rankData) {
+    const rank = {
+      tier: "UNRANKED",
+      division: 0,
+      leaguePoints: 0,
+    };
+    return rank;
+  }
+
   let division;
 
   switch (rankData.rank) {
     case "I":
       division = 1;
+      break;
     case "II":
       division = 2;
+      break;
     case "III":
       division = 3;
+      break;
     case "IV":
       division = 4;
+      break;
   }
 
   const rank = {

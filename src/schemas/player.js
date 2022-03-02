@@ -29,6 +29,10 @@ const playerSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  starter: {
+    type: Boolean,
+    default: true,
+  },
 });
 
 export default playerSchema;
