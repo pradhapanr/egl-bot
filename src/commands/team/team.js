@@ -1,9 +1,8 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
 
-import { Player, Team } from "../../models/models";
-import getRank from "../../utils/league-stats";
+import createTeam from "./subcommands/create";
 
-const player = {
+const team = {
   data: new SlashCommandBuilder()
     .setName("team")
     .setDescription("Command for managing teams,")
@@ -29,22 +28,7 @@ const player = {
 
     switch (command) {
       case "create":
-        const name = interaction.options.getString("name");
-        const league = interaction.options.getString("league");
-
-        const player = await Player.find({ username: name });
-
-        console.log(typeof player[0]._id);
-
-        const team = new Team({});
-
-        team.name = "BALL";
-        team.players.push(player[0]._id);
-        team.league = "BIG";
-
-        await team.save();
-        await interaction.reply(`obobboob`);
-
+        createTeam(interaction);
         break;
       case "delete":
         break;
@@ -52,4 +36,4 @@ const player = {
   },
 };
 
-export default player;
+export default team;

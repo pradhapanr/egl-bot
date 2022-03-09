@@ -1,4 +1,5 @@
-import { Player } from "../../../models/models";
+import { Player, Team } from "../../../models/models";
+import teamSchema from "../../../schemas/team";
 import getRank from "../../../utils/league-stats";
 
 const ERROR_MESSAGE =
@@ -12,6 +13,20 @@ async function createPlayer(interaction) {
 
   try {
     const rank = await getRank(username);
+
+    const res = await Team.findOne({ name: team });
+
+    if (!res) {
+      await interaction.reply(
+        `The team ${team} does not exist in the database. Player creation failed.`
+      );
+      return;
+    }
+
+    await Team.updateOne(
+      { name: team },
+      { $push: { players: { name: username } } }
+    );
 
     const player = new Player({
       summonerName: username,

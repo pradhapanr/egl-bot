@@ -32,6 +32,8 @@ const player = {
             .addChoice("Edge Gamers Lounge", "Edge Gamers Lounge")
             .addChoice("Nice Gaming", "Nice Gaming")
             .addChoice("Tempo Rush", "Tempo Rush")
+            .addChoice("Silence Right Clicker", "Silence Right Clicker")
+            .addChoice("Free Agent", "Free Agent")
         )
         .addIntegerOption((option) =>
           option
@@ -44,6 +46,11 @@ const player = {
             .setName("role")
             .setDescription("The role that this player fills.")
             .setRequired(true)
+            .addChoice("Top", "Top")
+            .addChoice("Jungle", "Jungle")
+            .addChoice("Mid", "Mid")
+            .addChoice("Bot", "Bot")
+            .addChoice("Support", "Support")
         )
     )
     /**
@@ -81,6 +88,7 @@ const player = {
             .addChoice("Edge Gamers Lounge", "Edge Gamers Lounge")
             .addChoice("Nice Gaming", "Nice Gaming")
             .addChoice("Tempo Rush", "Tempo Rush")
+            .addChoice("Silence Right Clicker", "Silence Right Clicker")
             .addChoice("Free Agent", "Free Agent")
         )
     )

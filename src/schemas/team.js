@@ -4,12 +4,13 @@ const teamSchema = mongoose.Schema({
   name: {
     type: String,
     required: true,
+    unique: true,
   },
   players: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Player",
-      required: true,
+      name: {
+        type: String,
+      },
     },
   ],
   league: {

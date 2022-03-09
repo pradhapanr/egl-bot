@@ -16,8 +16,9 @@ async function getPastebinData(pasteId) {
 
 function parseData(dataString) {
   const dataArray = dataString.split(/\s+/g);
+  console.log(dataArray);
 }
 
-const str = await getPastebinData("CGNPPddA");
+const str = await getPastebinData("BznTbiUZ");
 console.log(str);
 parseData(str);
