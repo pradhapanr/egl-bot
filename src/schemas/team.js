@@ -17,6 +17,12 @@ const teamSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  seriesPlayed: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Series",
+    },
+  ],
 });
 
 export default teamSchema;

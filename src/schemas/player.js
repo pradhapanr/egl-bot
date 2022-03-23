@@ -33,6 +33,18 @@ const playerSchema = mongoose.Schema({
     type: Boolean,
     default: true,
   },
+  seriesPlayed: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Series",
+    },
+  ],
+  gamesPlayed: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Games",
+    },
+  ],
 });
 
 export default playerSchema;

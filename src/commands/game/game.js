@@ -1,4 +1,5 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
+import parseData from "../../utils/game-parser";
 
 const game = {
   data: new SlashCommandBuilder()
@@ -15,7 +16,7 @@ const game = {
   async execute(interaction) {
     if (interaction.options.getSubcommand() === "upload") {
       const url = interaction.options.getString("link");
-      console.log(url);
+      await parseData(url);
     }
   },
 };

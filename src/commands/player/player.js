@@ -2,6 +2,7 @@ import { SlashCommandBuilder } from "@discordjs/builders";
 
 import createPlayer from "./subcommands/create";
 import deletePlayer from "./subcommands/delete";
+import viewPlayer from "./subcommands/view";
 import updatePlayerName from "./subcommands/update-name";
 import updatePlayerPoints from "./subcommands/update-points";
 import updatePlayerRole from "./subcommands/update-role";
@@ -156,6 +157,17 @@ const player = {
             .setDescription("The players new point value.")
             .setRequired(true)
         )
+    )
+    .addSubcommand((subcommand) =>
+      subcommand
+        .setName("view")
+        .setDescription("View a players profile.")
+        .addStringOption((option) =>
+          option
+            .setName("name")
+            .setDescription("The players name.")
+            .setRequired(true)
+        )
     ),
   async execute(interaction) {
     const command = interaction.options.getSubcommand();
@@ -178,6 +190,9 @@ const player = {
         break;
       case "update-team":
         updatePlayerTeam(interaction);
+        break;
+      case "view":
+        viewPlayer(interaction);
         break;
     }
   },
