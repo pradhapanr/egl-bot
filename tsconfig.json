@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "moduleResolution": "Node",
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "target": "ESNext",
+        "module": "esnext"
+    },
+    "ts-node": {
+        "esm": true
+    },
+    "lib": ["esnext"]
+}
