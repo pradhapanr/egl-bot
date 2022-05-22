@@ -2,7 +2,7 @@ import { Client, Collection, Intents } from "discord.js";
 import mongoose from "mongoose";
 
 import commandArray from "./commands/command-array";
-import config from "../config.json";
+import config from "../config.json" assert { type: "json" };
 
 const client = new Client({
   intents: [Intents.FLAGS.GUILDS],

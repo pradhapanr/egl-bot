@@ -11,6 +11,8 @@ async function createPlayer(interaction) {
   const circuitPoints = interaction.options.getInteger("circuitpoints");
   const role = interaction.options.getString("role");
 
+  const person = { first: name };
+
   try {
     const rank = await getRank(username);
 
